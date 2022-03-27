@@ -16,6 +16,8 @@ namespace Task50
         private static readonly By LOGIN_NAME_TEXT_FIELD = By.XPath("//span/input[@type='text']");
         private static readonly By LOGIN_BUTTON_SECOND = By.Id("passp:sign-in");
         private static readonly By PASSWORD_TEXT_FIELD = By.Name("passwd");
+        private static readonly By AVATAR_ELEMENT = By.XPath("//span[@class='avatar__image  avatar__image-server0']");
+        private static readonly By LOGOUT = By.XPath("//a[@data-statlog='mail.login.usermenu.exit']");
 
 
         protected IWebDriver _driver;
@@ -51,6 +53,17 @@ namespace Task50
             Thread.Sleep(1000);
 
             return new LoginPage(_driver);
+        }
+
+        public void Logout()
+        {
+            IWebElement avatarElement = _driver.FindElement(AVATAR_ELEMENT);
+            avatarElement.Click();
+
+            IWebElement logoutElement = _driver.FindElement(LOGOUT);
+            logoutElement.Click();
+
+            Thread.Sleep(1000); 
         }
     }
 }

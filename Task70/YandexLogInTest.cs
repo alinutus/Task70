@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -16,7 +16,6 @@ namespace Task50
 
         [Test]
         [TestCase("alinutus@yandex.ru", "coherent1")]
-        [TestCase("autolilia", "coherent1")]
         public void LogIn(string name, string password)
         {
             Driver = new ChromeDriver();
@@ -43,8 +42,7 @@ namespace Task50
             }
             );
 
-            var loginElement = Driver.FindElement(USERNAME_FIRST_LETTER).Text;
-            Assert.AreEqual("A", loginElement);
+            loginPage.Logout();
         }
     }
 }
