@@ -7,7 +7,7 @@ using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace Task50
+namespace Task70
 {
     public class LoginPage
     {

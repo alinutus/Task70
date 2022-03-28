@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 
-namespace Task50
+namespace Task70
 {
     public class YandexLoginTests
     {
@@ -41,6 +41,9 @@ namespace Task50
                 }
             }
             );
+
+            YandexScreenshot screenshot = new YandexScreenshot(Driver);
+            screenshot.TakeScreenshot();
 
             loginPage.Logout();
         }
