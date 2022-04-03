@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 
 namespace Task70
-{
+{ 
     public class YandexLoginTests
     {
         private static readonly By USERNAME_FIRST_LETTER = By.ClassName("username__first-letter");
@@ -16,7 +16,7 @@ namespace Task70
 
         [Test]
         [TestCase("alinutus@yandex.ru", "coherent1")]
-        public void LogIn(string name, string password)
+        public void LogOut(string name, string password)
         {
             Driver = new ChromeDriver();
             Driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(15);
@@ -46,6 +46,25 @@ namespace Task70
             screenshot.TakeScreenshot();
 
             loginPage.Logout();
+        }
+
+        [Test]
+        [TestCase("autolilia", "coherent1")]
+        public void LogIn(string name, string password)
+        {
+            Driver = new ChromeDriver();
+            Driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(15);
+
+            var loginPage = new LoginPage(Driver);
+
+            loginPage.LoginName(name);
+
+            loginPage.LoginPassword(password);
+
+            var accountName = "A";
+            var loginElement = Driver.FindElement(USERNAME_FIRST_LETTER).Text;
+            var message = "Account name has wrong value";
+            Assert.AreEqual(accountName, loginElement, message);
         }
     }
 }

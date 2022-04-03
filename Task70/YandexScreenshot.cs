@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Task70
 {
@@ -16,19 +17,23 @@ namespace Task70
         {
             _driver = driver;
         }
+
+        public object Helper { get; private set; }
+
         public void TakeScreenshot()
         {
             try
             {
                 var screenshotDriver = _driver as ITakesScreenshot;
 
+                 string startupPath = Environment.CurrentDirectory;
                 Screenshot screenshot = ((ITakesScreenshot) _driver).GetScreenshot();
-                screenshot.SaveAsFile(@"D:\Screenshots\SeleniumTestingScreenshot.jpg", ScreenshotImageFormat.Jpeg);
+                string cas = DateTime.Now.ToString("dd_MM_yy_HH_mm_ss");
+                screenshot.SaveAsFile(cas + ".jpg", ScreenshotImageFormat.Jpeg);
             }
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
-                throw;
             }
         }
     }

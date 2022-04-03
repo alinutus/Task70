@@ -53,6 +53,8 @@ namespace Task70
             Thread.Sleep(1000);
 
             return new LoginPage(_driver);
+
+            Thread.Sleep(1000);
         }
 
         public void Logout()
